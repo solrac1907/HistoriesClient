@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import Client from './pages/Client';
+import Layout from './pages/Layout';
+import Tramos from './pages/Tramos';
+import TramosForClient from './pages/TramosForClient';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UseContextDate from './context/UseContextDate'
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <UseContextDate>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path='client' element={<Client />} />
+            <Route path="tramos" element={<Tramos />} />
+            <Route path="tramosForClient" element={<TramosForClient />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UseContextDate>
+  )
 }
 
 export default App;
